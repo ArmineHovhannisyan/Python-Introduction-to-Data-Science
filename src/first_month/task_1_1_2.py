@@ -27,7 +27,7 @@ print(strResult)
 
 str = input()
 length = len(str)
-strResult =  str[-2:]
+strResult =  4 * str[-2:]
 print(strResult)
 
 
@@ -35,11 +35,9 @@ print(strResult)
 
 # 1.Write a Python program that make a list from given string
 
-str = input()
-list = list(str.split(" "))
-print(list)
+str = 'armine'
+print(list(str))
 
-#example - my name is armine -> ['my', 'name', 'is', 'armine']
 
 
 # 2.Write a Python program to print a new list which is the equivalent given list after removing the 0th, 4th and 5th elements.
