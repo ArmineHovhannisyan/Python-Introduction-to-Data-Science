@@ -21,7 +21,7 @@ print(maxValue)
 i = 1
 n = 5
 list = []
-while i**2 < 30:
+while i <= 30:
     list.append(i**2)
     i = i + 1
 print(list[n:])
@@ -39,6 +39,12 @@ while i < len(list):
             j += 1
     i += 1
 print(list)
+
+#using built in function
+mylist = [1, 5, 3, 6, 3, 5, 6, 1]
+mylist = list(set(mylist))
+print (str(mylist))
+
 
 
 
