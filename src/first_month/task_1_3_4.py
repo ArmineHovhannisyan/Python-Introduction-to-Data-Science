@@ -24,6 +24,29 @@ print(Euler(1))   #0
 print(Euler(8))   #4
 
 
+
+# 2.Ticket numbers usually consist of an even number of digits. A ticket number is considered lucky
+# if the sum of the first half of the digits is equal to the sum of the second half.
+# Given a ticket number n, determine if it's lucky or not.
+
+def isLucky(n):  #lets consider we're gonna input at least 2 digit number
+    digits = []
+    while n:
+        digits.append(n % 10)
+        n //= 10
+    # return digits
+    first_half_sum = 0
+    second_half_sum = 0
+    for i in range(len(digits) // 2):
+        second_half_sum += digits[i]
+    for i in range(len(digits) // 2, len(digits)):
+        first_half_sum += digits[i]
+    return first_half_sum == second_half_sum
+
+
+print(isLucky(1230))
+print(isLucky(1238))
+
 # 4. Write a python function, which returns the sum of digits of given number N.
 def sumOfDigits(n):
     sum = 0
