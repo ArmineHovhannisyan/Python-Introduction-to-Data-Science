@@ -22,3 +22,13 @@ def Euler(n):
 print(Euler(0))   #0
 print(Euler(1))   #0
 print(Euler(8))   #4
+
+
+# 4. Write a python function, which returns the sum of digits of given number N.
+def sumOfDigits(n):
+    sum = 0
+    while n:
+        sum += n % 10
+        n //= 10
+    return sum
+print(sumOfDigits(735))   #15
