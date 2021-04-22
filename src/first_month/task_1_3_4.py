@@ -47,6 +47,13 @@ def isLucky(n):  #lets consider we're gonna input at least 2 digit number
 print(isLucky(1230))
 print(isLucky(1238))
 
+
+# 3.The robot is standing on a rectangular grid and is currently located at the point (X0, Y0).
+# The coordinates are integers. It receives N remote commands(list with n elements each of them is a command).
+# Each command is one of : up, down, left, right. Upon receiving a correct command, the robot moves one unit in the given direction.
+# If the robot receives an incorrect command, it simply ignores it. Where will the robot be located after following all the commands?
+#Write a python function, which returns the sum of digits of given number N.
+
 # 4. Write a python function, which returns the sum of digits of given number N.
 def sumOfDigits(n):
     sum = 0
@@ -55,3 +62,7 @@ def sumOfDigits(n):
         n //= 10
     return sum
 print(sumOfDigits(735))   #15
+
+
+
+# 5.Write a python program to find the next smallest palindrome of a specified number. For example, for 119 next palindrome is 121. 
