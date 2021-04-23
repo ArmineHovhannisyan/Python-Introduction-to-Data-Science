@@ -3,7 +3,7 @@
 # 1. Write a python program which returns a given list without duplicates.
 
 l = [1 ,2, 1, 35, 21, 9, 21, 'a']
-print(set(l))
+print(list(set(l)))
 
 # 2. Write a python program which returns common elements of 2 lists.
 
@@ -51,7 +51,7 @@ print(removeFromSet({1, 2, 3}, 4))
 def getCubes(s):
    cubes = []
    for i in s:
-       cubes.append(i ** 2)
+       cubes.append(i ** 3)
    return cubes
 
 print(getCubes({2, 3, 5, 2}))

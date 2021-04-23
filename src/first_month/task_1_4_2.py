@@ -22,7 +22,7 @@ print(d1)
 d_cubes = {}
 n = 7
 for i in range(1, n + 1):
-    d_cubes[i] = i**2
+    d_cubes[i] = i**3
 print(d_cubes)
 
 
@@ -39,6 +39,12 @@ print(d)
 
 
 # 5.Write a python program which gets the maximum and minimum values of a dictionary.
+
+
+# 6.Write a python program which combines 2 dictionaries into one, if there is an element with the same key, appropriate element of combined dict will be an element with that key, and sum of values as value.
+# 7.Write a python program which create dict from string, where keys are letters of  string, values are counts of letters in string
+
+
 
 
 
