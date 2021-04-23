@@ -1,6 +1,6 @@
 class Money:
-    ammount = 0
-    currency =''
+    amount = 0
+    currency = ''
 
     def __init__(self, amnt, cur):
         self.amount = amnt
