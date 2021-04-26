@@ -39,6 +39,25 @@ print(d)
 
 
 # 5.Write a python program which gets the maximum and minimum values of a dictionary.
+d = { 'b': 2, 'c' : 3, 'a': 1, 'd': 4}
+
+max_value = list(d.values())[0]
+max_key = None
+for i in d:
+    if d[i] > max_value:
+        max_value = d[i]
+        max_key = i
+print('maximum ' + max_key + ':' + str(max_value))
+
+
+min_value = list(d.values())[0]
+min_key = None
+for j in d:
+    if d[j] < min_value:
+        min_value = d[j]
+        min_key = j
+print('minimum ' + min_key + ':' + str(min_value))
+
 
 
 # 6.Write a python program which combines 2 dictionaries into one, if there is an element with the same key, appropriate element of combined dict will be an element with that key, and sum of values as value.
