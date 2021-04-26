@@ -65,4 +65,60 @@ print(sumOfDigits(735))   #15
 
 
 
-# 5.Write a python program to find the next smallest palindrome of a specified number. For example, for 119 next palindrome is 121. 
+# 5.Write a python program to find the next smallest palindrome of a specified number. For example, for 119 next palindrome is 121.
+def getNextPalindrome(n):
+    digits = []
+    while n:
+        digits.append(n % 10)
+        n //= 10
+
+    digits = digits[::-1]
+    lengt = len(digits)
+
+    mid = int(lengt / 2)
+    isLeftSmaller = False
+    i = mid - 1
+
+    j = mid + 1 if (lengt % 2) else mid
+
+    while (i >= 0 and digits[i] == digits[j]):
+        i -= 1
+        j += 1
+
+    if (i < 0 or digits[i] < digits[j]):
+        isLeftSmaller = True
+
+    while (i >= 0):
+        digits[j] = digits[i]
+        j += 1
+        i -= 1
+
+    if (isLeftSmaller):
+        temp = 1
+        i = mid - 1
+
+        if (lengt % 2 == 1):
+            digits[mid] += temp
+            temp = int(digits[mid] // 10)
+            digits[mid] %= 10
+            j = mid + 1
+
+        else:
+            j = mid
+
+        while (i >= 0):
+            digits[i] += temp
+            temp = int(digits[i] // 10)
+            digits[i] %= 10
+            digits[j] = digits[i]
+            j += 1
+            i -= 1
+
+    palindrome = 0
+    for k in range(0, lengt):
+        palindrome += digits[k] * (10 ** k)
+    return palindrome
+
+
+print(getNextPalindrome(0))
+print(getNextPalindrome(14454651321))
