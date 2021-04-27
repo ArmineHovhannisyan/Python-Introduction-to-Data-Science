@@ -53,6 +53,31 @@ print(is_lucky(1238))
 # Each command is one of : up, down, left, right. Upon receiving a correct command, the robot moves one unit in the given direction.
 # If the robot receives an incorrect command, it simply ignores it. Where will the robot be located after following all the commands?
 
+def get_coordinates(*commands):
+    up_steps = 0
+    down_steps = 0
+    right_steps = 0
+    left_steps = 0
+
+    for c in commands:
+        if c == 'up':
+            up_steps += 1
+        if c == 'down':
+            down_steps += -1
+        if c == 'right':
+            right_steps += 1
+        if c == 'left':
+            left_steps += -1
+
+    horizontal_steps = right_steps + left_steps
+    vertical_steps = up_steps + down_steps
+
+    print('Initial coordinates: X0, Y0')
+    print('Coordinates After commands: X' + str(horizontal_steps) + ', Y' + str(vertical_steps))
+
+
+print(get_coordinates('up', 'down', 'left', 'right'))
+print(get_coordinates('up', 'down', 'down', 'right', 'down', 'r', '2 steps left', 'd', 'u'))
 
 # 4. Write a python function, which returns the sum of digits of given number N.
 def sum_of_digits(n):
