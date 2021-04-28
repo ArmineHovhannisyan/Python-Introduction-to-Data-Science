@@ -9,17 +9,17 @@ class Money:
         print(str(self.__amount) + ' ' + self.__currency)
 
     def sum(self, money):
-        if(self.__currency == money.__currency):
+        if self.__currency == money.__currency:
            self.__amount += money.__amount
-           return  self
+
         else:
            print('Cant calculate sum of two different currencies. Please implement converter method')
 
     def sub(self, money):
-        if(self.__currency == money.__currency):
-            if(self.__amount  >= money.__amount):
+        if self.__currency == money.__currency:
+            if self.__amount  >= money.__amount:
                 self.__amount -= money.__amount
-                return  self
+
             else:
                 print('First amount should be greater or equal to second')
         else:
