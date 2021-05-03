@@ -2,11 +2,12 @@ class Rational:
     def __init__(self, n, d):
         if d == 0:
             print('denumerator cant be 0')
-        _gcd = self.gcd(n, d)
+        _gcd = Rational.gcd(n, d)
         self.numerator = n // _gcd
         self.denumerator = d // _gcd
 
-    def gcd(self, a, b):
+    @staticmethod
+    def gcd(a, b):
         while a != b:
             if a > b:
                 a = a - b
@@ -14,8 +15,10 @@ class Rational:
                 b = b - a
         return a
 
-    def lcm(self, a, b):
-        return a * b // (self.gcd(a, b))
+
+    @staticmethod
+    def lcm(a, b):
+        return a * b // (Rational.gcd(a, b))
 
     def __repr__(self):
         print(str(self.numerator) + '/' + str(self.denumerator))
@@ -31,12 +34,12 @@ class Rational:
         return s.numerator == o.numerator and s.denumerator == o.denumerator
 
     def __add__(self, other):
-        a = self.lcm(self.denumerator, other.denumerator)
+        a = Rational.lcm(self.denumerator, other.denumerator)
         b = self.numerator * (a // self.denumerator) + other.numerator * (a // other.denumerator)
         return  Rational(b, a)
 
     def __sub__(self, other):
-        a = self.lcm(self.denumerator, other.denumerator)
+        a = Rational.lcm(self.denumerator, other.denumerator)
         b = self.numerator * (a // self.denumerator) - other.numerator * (a // other.denumerator)
         return Rational(b, a)
 
@@ -51,19 +54,19 @@ class Rational:
         return Rational(a, b)
 
     def __gt__(self, other):
-        _lcm = self.lcm(self.denumerator, other.denumerator)
+        _lcm = Rational.lcm(self.denumerator, other.denumerator)
         return self.numerator * (_lcm // self.denumerator) > other.numerator * (_lcm // other.denumerator)
 
     def __ge__(self, other):
-        _lcm = self.lcm(self.denumerator, other.denumerator)
+        _lcm = Rational.lcm(self.denumerator, other.denumerator)
         return self.numerator * (_lcm // self.denumerator) >= other.numerator * (_lcm // other.denumerator)
 
     def __lt__(self, other):
-        _lcm = self.lcm(self.denumerator, other.denumerator)
+        _lcm = Rational.lcm(self.denumerator, other.denumerator)
         return self.numerator * (_lcm // self.denumerator) < other.numerator * (_lcm // other.denumerator)
 
     def __le__(self, other):
-        _lcm = self.lcm(self.denumerator, other.denumerator)
+        _lcm = Rational.lcm(self.denumerator, other.denumerator)
         return self.numerator * (_lcm // self.denumerator) <= other.numerator * (_lcm // other.denumerator)
 
     def __pow__(self, n):
