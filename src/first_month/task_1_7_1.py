@@ -1,3 +1,5 @@
+from task_1_5_2 import Money
+
 class Person:
     def __init__(self, name, surname, age, gender):
         self.name = name
@@ -36,39 +38,6 @@ class Teacher(Person):
                + str(self.discipline) + ', Years at university: ' + str(self.experience) \
                + ', Salary: ' + str(print(self.salary))  # why should I use str(). print() is already returning string
 
-
-# To Do: Import class Money (don't use explicit in this file)
-class Money:
-
-    def __init__(self, amnt, cur):
-        self.__amount = amnt
-        self.__currency = cur
-
-    def __repr__(self):
-        return str(self.__amount) + ' ' + self.__currency
-
-    def __str__(self):
-        return str(self.__amount) + ' ' + self.__currency
-
-    def __add__(self, money):
-        if self.__currency == money.__currency:
-            self.__amount += money.__amount
-
-        else:
-            print('Cant calculate sum of two different currencies. Please implement converter method')
-
-    def __sub__(self, money):
-        if self.__currency == money.__currency:
-            if self.__amount >= money.__amount:
-                self.__amount -= money.__amount
-
-            else:
-                print('First amount should be greater or equal to second')
-        else:
-            print('Cant calculate sub of two different currencies. Please implement converter method')
-
-
-#########
 
 p = Person('Armine', 'Hovhannisyan', 27, 'Female')
 s = Student('Armine', 'Hovhannisyan', 27, 'Female', 'YSU', 'IAM', 'Discrete Math', 16)

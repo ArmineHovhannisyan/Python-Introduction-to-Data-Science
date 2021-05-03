@@ -25,6 +25,8 @@ class Money:
             print('Cant calculate sub of two different currencies. Please implement converter method')
 
 
+
+
 def main():
     m1 = Money(5, 'usd')
     print(m1)
@@ -43,5 +45,6 @@ def main():
     m1 - m3
     print(m1)
 
+#main()
 
-main()
+
