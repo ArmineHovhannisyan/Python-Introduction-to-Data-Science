@@ -15,18 +15,17 @@ class Rational:
                 b = b - a
         return a
 
-
     @staticmethod
     def lcm(a, b):
         return a * b // (Rational.gcd(a, b))
 
     def __repr__(self):
-        print(str(self.numerator) + '/' + str(self.denumerator))
+         return str(self.numerator) + '/' + str(self.denumerator)
 
     def __str__(self):
-         if self.numerator == self.denumerator:
-             return '1'
-         return str(self.numerator) + '/' + str(self.denumerator)
+        if self.numerator == self.denumerator:
+            return '1'
+        return str(self.numerator) + '/' + str(self.denumerator)
 
     def __eq__(self, other):
         s = Rational(self.numerator, self.denumerator)
@@ -75,13 +74,8 @@ class Rational:
         return Rational(a, b)
 
 
-
-
-
-
-
-r1 = Rational(15,8)
-r2 = Rational(5,4)
+r1 = Rational(15, 8)
+r2 = Rational(5, 4)
 
 r = r1 + r2
 print(r)
@@ -100,7 +94,7 @@ print(r1 <= r2)
 
 print(r2 ** 3)
 
-r = Rational(2,0)
+r = Rational(2, 0)
 
 
 

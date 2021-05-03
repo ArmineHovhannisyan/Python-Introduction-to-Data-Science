@@ -34,7 +34,7 @@ class Teacher(Person):
     def __repr__(self):
         return super().__repr__() + ' - Info: ' + str(self.university) + ' ' + str(self.faculty) + ' ' \
                + str(self.discipline) + ', Years at university: ' + str(self.experience) \
-               + ', Salary: ' + print(self.salary)
+               + ', Salary: ' + str(print(self.salary))  # why should I use str(). print() is already returning string
 
 
 # To Do: Import class Money (don't use explicit in this file)
