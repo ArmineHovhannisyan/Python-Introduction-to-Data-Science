@@ -20,7 +20,7 @@ class Rational:
         return a * b // (Rational.gcd(a, b))
 
     def __repr__(self):
-         return str(self.numerator) + '/' + str(self.denumerator)
+        return str(self.numerator) + '/' + str(self.denumerator)
 
     def __str__(self):
         if self.numerator == self.denumerator:
