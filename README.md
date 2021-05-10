@@ -15,3 +15,4 @@
  ###### 1.5.2 OOP: Money class
  ###### 1.6.1 OOP: Rational class:  Magic functions
  ###### 1.7.1 OOP: Person Student Teacher classes: Heredity
+ ###### Final Project: Hotel's room reservation system
