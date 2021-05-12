@@ -31,10 +31,17 @@ class Room:
 class Hotel:
 
     def __init__(self, name, rating, rater_count, _rooms):
-        self.__name = name
-        self.__rating = rating
-        self.__rater_count = rater_count
-        self.__rooms = _rooms
+        try:
+            if rating < 0 or rating > 10:
+                raise ValueError
+        except ValueError:
+            print('Rate should be between 0 and 10')
+
+        else:
+            self.__name = name
+            self.__rating = rating
+            self.__rater_count = rater_count
+            self.__rooms = _rooms
 
     def __repr__(self):
         return self.__name + ': rate ' + str(self.__rating)
@@ -53,8 +60,14 @@ class Hotel:
                 r.checkout(room.get_count())
 
     def rate(self, rating):
-        self.__rater_count += 1
-        self.__rating = round(((self.__rater_count - 1) * self.__rating + rating) / self.__rater_count, 1)
+        try:
+            if rating < 0 or rating > 10:
+                raise ValueError
+        except ValueError:
+            print('Rate should be between 0 and 10')
+        else:
+            self.__rater_count += 1
+            self.__rating = round(((self.__rater_count - 1) * self.__rating + rating) / self.__rater_count, 1)
 
     def get_rooms(self):
         available_rooms = ''
@@ -87,11 +100,11 @@ class Hotel:
 
 r1 = Room('single', 4)
 print(r1)
-print(type('aaa'))
 
 room_for_reserve = Room('single', 2)
 rooms = [r1]
 
+hotel1 = Hotel('Hotel', 100, 100, rooms)
 hotel = Hotel('Hotel', 0, 0, rooms)
 print(hotel)
 
@@ -100,7 +113,7 @@ hotel.rate(5)
 hotel.rate(5)
 hotel.rate(4)
 hotel.rate(4)
-hotel.rate(5)
+hotel.rate(15)
 print(hotel)
 
 
