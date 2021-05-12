@@ -16,7 +16,10 @@ class Room:
         return self.__count
 
     def reserve(self, count):
-        self.__count -= count
+        if self.__count == 0:
+            print('There are no free ' + self.__type + ' rooms to reserve')
+        else:
+            self.__count -= count
 
     def checkout(self, count):
         self.__count += count
@@ -77,6 +80,9 @@ class Hotel:
             for r_removed in _rooms:
                 if r_current.get_type() == r_removed.get_type():
                     r_current.set_count(r_current.get_count() - r_removed.get_count())
+
+                else:
+                    print('There are no ' + r_removed.get_type() + ' rooms to remove')
 
 
 r1 = Room('single', 4)
