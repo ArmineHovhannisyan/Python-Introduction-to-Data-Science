@@ -1,10 +1,20 @@
 class Rational:
     def __init__(self, n, d):
-        if d == 0:
-            print('denumerator cant be 0')
-        _gcd = Rational.gcd(n, d)
-        self.numerator = n // _gcd
-        self.denumerator = d // _gcd
+        try:
+            if not (isinstance(n, int) or isinstance(d, int)):
+                raise TypeError
+        except TypeError:
+            print('numerator and denumerator should be integer')
+        else:
+            try:
+                if d == 0:
+                    raise ZeroDivisionError
+            except ZeroDivisionError:
+                print('denumerator cant be 0')
+            else:
+                _gcd = Rational.gcd(n, d)
+                self.numerator = n // _gcd
+                self.denumerator = d // _gcd  #gcd cant be 0. no need to check ZeroDivisionError
 
     @staticmethod
     def gcd(a, b):
@@ -34,13 +44,21 @@ class Rational:
 
     def __add__(self, other):
         a = Rational.lcm(self.denumerator, other.denumerator)
-        b = self.numerator * (a // self.denumerator) + other.numerator * (a // other.denumerator)
-        return  Rational(b, a)
+        try:
+            b = self.numerator * (a // self.denumerator) + other.numerator * (a // other.denumerator)
+        except ZeroDivisionError:
+            print('denumerator cant be 0')
+        else:
+            return  Rational(b, a)
 
     def __sub__(self, other):
         a = Rational.lcm(self.denumerator, other.denumerator)
-        b = self.numerator * (a // self.denumerator) - other.numerator * (a // other.denumerator)
-        return Rational(b, a)
+        try:
+            b = self.numerator * (a // self.denumerator) - other.numerator * (a // other.denumerator)
+        except ZeroDivisionError:
+            print('denumerator cant be 0')
+        else:
+            return Rational(b, a)
 
     def __mul__(self, other):
         a = self.numerator * other.numerator
@@ -74,6 +92,7 @@ class Rational:
         return Rational(a, b)
 
 
+r0 = Rational('5', '7')
 r1 = Rational(15, 8)
 r2 = Rational(5, 4)
 

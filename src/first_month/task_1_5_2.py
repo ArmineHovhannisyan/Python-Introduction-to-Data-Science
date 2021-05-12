@@ -1,8 +1,28 @@
 class Money:
 
     def __init__(self, amnt, cur):
-        self.__amount = amnt
-        self.__currency = cur
+        try:
+            if not (isinstance(amnt, int) or isinstance(amnt, float)):
+                raise TypeError
+        except TypeError:
+            print('amount should be number')
+
+        try:
+            if not (isinstance(cur, str)):
+                raise TypeError
+        except TypeError:
+            print('currency should be string')
+
+        else:
+            try:
+                if amnt < 0:
+                    raise ValueError
+            except ValueError:
+                print('amount cant be negative')
+
+            else:
+                self.__amount = amnt
+                self.__currency = cur
 
     def __repr__(self):
         return str(self.__amount) + ' ' + self.__currency
@@ -25,9 +45,9 @@ class Money:
             print('Cant calculate sub of two different currencies. Please implement converter method')
 
 
-
-
 def main():
+    m0 = Money(-10, 'usd')
+    m0 = Money('58', 8)
     m1 = Money(5, 'usd')
     print(m1)
     m2 = Money(11, 'usd')
@@ -45,6 +65,6 @@ def main():
     m1 - m3
     print(m1)
 
-#main()
+main()
 
 
