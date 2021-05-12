@@ -61,7 +61,8 @@ class Hotel:
 
     def add_room(self, _rooms):
         added_rooms = []
-        existing_types = []
+        #existing_types = []
+
         for r_current in self.__rooms:
             for r_added in _rooms:
                 if r_current.get_type() != r_added.get_type():
