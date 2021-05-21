@@ -25,23 +25,18 @@ class Room:
         self.__count += count
 
     def set_count(self, count):
-        self.__count = count
+        if count > 0:
+            self.__count = count
 
 
 class Hotel:
 
-    def __init__(self, name, rating, rater_count, _rooms):
-        try:
-            if rating < 0 or rating > 10:
-                raise ValueError
-        except ValueError:
-            print('Rate should be between 0 and 10')
+    def __init__(self, name):
 
-        else:
-            self.__name = name
-            self.__rating = rating
-            self.__rater_count = rater_count
-            self.__rooms = _rooms
+        self.__name = name
+        self.__rating = 0
+        self.__rater_count = 0
+        self.__rooms = [Room('single', 0), Room('double', 0), Room('penthouse', 0)]
 
     def __repr__(self):
         return self.__name + ': rate ' + str(self.__rating)
@@ -49,15 +44,15 @@ class Hotel:
     def get_rate(self):
         return self.__rating
 
-    def reserve(self, room):
+    def reserve(self, _type, _count):
         for r in self.__rooms:
-            if r.get_type() == room.get_type():
-                r.reserve(room.get_count())
+            if r.get_type() == _type:
+                r.reserve(_count)
 
-    def checkout(self, room):
+    def checkout(self, _type, _count):
         for r in self.__rooms:
-            if r.get_type() == room.get_type():
-                r.checkout(room.get_count())
+            if r.get_type() == _type:
+                r.checkout(_count)
 
     def rate(self, rating):
         try:
@@ -70,42 +65,30 @@ class Hotel:
             self.__rating = round(((self.__rater_count - 1) * self.__rating + rating) / self.__rater_count, 1)
 
     def get_rooms(self):
-        available_rooms = ''
+
+        return self.__rooms
+
+    def add_room(self, _type, _count):
+        _rooms = []
+        r_added = Room(_type, _count)
+
         for r in self.__rooms:
-            available_rooms += r.get_type() + ' ' + str(r.get_count()) + ' '
-        return available_rooms
+            if _type == r.get_type():
+                r.set_count(r.get_count() + _count)
 
-    def add_room(self, _rooms):
-        added_rooms = []
-        #existing_types = []
+    def remove_room(self, _type, _count):
+        for r in self.__rooms:
+            if r.get_type() == _type:
+                r.set_count(r.get_count() - _count)
 
-        for r_current in self.__rooms:
-            for r_added in _rooms:
-                if r_current.get_type() != r_added.get_type():
-                    added_rooms.append(r_added)
-                else:
-                    r_current.set_count(r_current.get_count() + r_added.get_count())
-
-        self.__rooms.extend(added_rooms)
-
-    def remove_room(self, _rooms):
-        for r_current in self.__rooms:
-            for r_removed in _rooms:
-                if r_current.get_type() == r_removed.get_type():
-                    r_current.set_count(r_current.get_count() - r_removed.get_count())
-
-                else:
-                    print('There are no ' + r_removed.get_type() + ' rooms to remove')
+                try:
+                    if r.get_count() - _count < 0:
+                        raise ValueError
+                except ValueError:
+                    print('There are no available ' + str(_count) + ' ' + _type + ' rooms to remove')
 
 
-r1 = Room('single', 4)
-print(r1)
-
-room_for_reserve = Room('single', 2)
-rooms = [r1]
-
-hotel1 = Hotel('Hotel', 100, 100, rooms)
-hotel = Hotel('Hotel', 0, 0, rooms)
+hotel = Hotel('Hotel')
 print(hotel)
 
 hotel.rate(5)
@@ -117,28 +100,25 @@ hotel.rate(15)
 print(hotel)
 
 
+hotel.add_room('single', 3)
 print(hotel.get_rooms())
-hotel.reserve(room_for_reserve)
+hotel.reserve('single', 2)
 print(hotel.get_rooms())
-hotel.checkout(room_for_reserve)
-print(hotel.get_rooms())
-
-
-added_room1 = Room('single', 3)
-added_room2 = Room('single', 2)
-added_room3 = Room('double', 2)
-rooms_added = [added_room1, added_room2, added_room3]
-
-added_room4 = Room('double', 2)
-
-
-hotel.add_room(rooms_added)
-rooms_added2 = [added_room4]
+hotel.checkout('single', 2)
 print(hotel.get_rooms())
 
-hotel.add_room(rooms_added2)
+
+hotel.add_room('single', 2)
+hotel.add_room('double', 2)
+
 print(hotel.get_rooms())
 
-#hotel.add_room([])
+hotel.add_room('penthouse', 2)
+hotel.add_room('penthouse', 2)
+hotel.add_room('double', 2)
+print(hotel.get_rooms())
+
+hotel.remove_room('double', 7)
+
 
 
