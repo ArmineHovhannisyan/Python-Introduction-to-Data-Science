@@ -22,3 +22,4 @@
  ## Second month - Datascience basics
  #### Homeworks:
  ###### 2.1 Numpy intro
+ ###### 2.1 Numpy: Matrixes
