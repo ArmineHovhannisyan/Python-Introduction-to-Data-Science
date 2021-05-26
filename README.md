@@ -16,3 +16,9 @@
  ###### 1.6.1 OOP: Rational class:  Magic functions
  ###### 1.7.1 OOP: Person Student Teacher classes: Heredity
  ###### Final Project: Hotel's room reservation system
+
+
+
+ ## Second month - Datascience basics
+ #### Homeworks:
+ ###### 2.1 Numpy intro
