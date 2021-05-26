@@ -37,4 +37,13 @@ m = np.random.rand(4, 4)
 print(m)
 
 inverse = np.linalg.inv(m)
-print('inverse: '+ str(inverse))
+print('inverse: ' + str(inverse))
+
+
+# 5. Write a NumPy program to generate matrix and write it to a file, then again read from file that matrix.
+
+m = np.random.rand(10, 10)
+np.save('matrixes', m)
+matrixes_data = np.load('matrixes.npy')
+
+print(matrixes_data)
