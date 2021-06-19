@@ -16,7 +16,7 @@ print('maximum value: ' + str(_max))
 arr = np.array([[0, 1],
                 [2, 3]])
 
-# 2. Find min and max in NumPy array by second axys
+# 2. Find min and max in NumPy array by second axis
 
 _max2 = np.amax(m, 1)
 _min2 = np.amin(m, 1)
